@@ -29,6 +29,11 @@ $(document).ready( function() {
       $('#go').click();
     }
   });
+  $('#task').keyup( function(e) {
+    if( e.which == 13 ) {
+      $('#go').click();
+    }
+  });
 
   $('#go').click( function() {
     if( $('#username').val() != '' && $('#task').val() != '') {

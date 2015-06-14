@@ -58,6 +58,7 @@ fetchNew: function() {
                 }
             }
 
+/*
             if( Chat.active == false ) {
                 $('#chat_box').attr('disabled', 'disabled');
                 $('#chat_box').addClass('chat_disabled');
@@ -77,8 +78,8 @@ fetchNew: function() {
                     Chat.wasActive = true;
 
                 }
-
             }
+*/
 
         if( Chat.startOfRound < 0 ) {
         Chat.startOfRound = Chat.lastid;
@@ -100,7 +101,7 @@ fetchNew: function() {
 
 
 init: function() {
-    $('#chat_box').keypress(function(e) {
+    $('#chat_box').keypress( function(e) {
         if(e.which == 13){
             e.preventDefault();
             var curRole = "user"
@@ -126,37 +127,33 @@ init: function() {
             $('#chat_box').val('');
         }
         else{
-          if( $('#chat_box').val().length() >= 100 ) {
+          if ($('#chat_box').val().length >= 100) {
             return false;
           }
+        }
     });
 
     $("#chat_area").mousemove(function() {
         $("#chat_area").stop();
     });
-
     $(".chat_defaultText").focus(function(srcc) {
         if ($(this).val() == $(this)[0].title) {
             $(this).removeClass("chat_defaultTextActive");
             $(this).val("");
         }
     });
-    
     $(".chat_defaultText").blur(function() {
         if ($(this).val() == "") {
             $(this).addClass("chat_defaultTextActive");
             $(this).val($(this)[0].title);
         }
     });
-
     $(".chat_defaultText").blur();
-
 
     // set updaters
     Chat.fetchNew();
     setInterval(Chat.fetchNew, 1500);
-
-
+},
 
 }
 

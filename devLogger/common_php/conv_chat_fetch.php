@@ -6,10 +6,9 @@ include('_db.php');
 
 $time_window = 10000000*60;
 
-if( isset($_REQUEST['session']) ) {  //&& isset($_REQUEST['round']) ) {
+if( isset($_REQUEST['session']) ) {
 
   $session = $_REQUEST['session'];
-  //$round = intval($_REQUEST['round']);
 
   $lastid = -1;
   if( isset($_REQUEST['lastid']) ) {
@@ -60,7 +59,7 @@ if( isset($_REQUEST['session']) ) {  //&& isset($_REQUEST['round']) ) {
     print '], "valid_ids": [';
 
     // For MySql version:
-    $sth = $dbh->prepare ("SELECT done, role, user, users.id AS user_id, chat, time, c.id AS chat_id FROM msgs c, sessions, users WHERE users.id = c.user_id AND sessions.session = :session AND sessions.id = c.session_id AND role != 'requester' AND DATEDIFF(second, CURRENT_TIMESTAMP, time) < :time_window ORDER BY time");
+    $sth = $dbh->prepare ("SELECT done, role, user, users.id AS user_id, chat, time, c.id AS chat_id FROM msgs c, sessions, users WHERE users.id = c.user_id AND sessions.session = :session AND sessions.id = c.session_id AND role != 'requester' AND julianday('now') - time < :time_window ORDER BY time");
     $sth->execute(array(':session'=>$session, ':time_window'=>$time_window));
 
     $first_time=true;
