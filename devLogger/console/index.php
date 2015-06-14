@@ -22,7 +22,7 @@
 <body>
 	<div id="chat_outer-container">
 
-		<div id="instructions-container">
+		<!--div id="instructions-container">
 			<div id="instructions-header">
 				Instructions:
 			</div>
@@ -31,18 +31,8 @@
                                 <ul>
                                   <li>Ask the agent for anything you'd like it to do. The agent will remember questions you've asked so that it can learn later!</li>
                                 </ul>
-
-                                <!--div id="feedback-wrapper">
-                                  <div id="num-questions-header">
-                                    Questions asked:
-                                  </div>
-                                  <div id="num-questions-count">
-                                    0
-                                  </div>
-                                </div-->
 			</div>
-					
-		</div>
+		</div-->
 
 		<div id="chat_container">
 			<div id="chat_header">
@@ -54,7 +44,7 @@
 			<form style="background: #eee; border-radius: 0px 0px 6px 6px;">
 				<textarea id="chat_box" cols="30" rows="5" class="chat_defaultText"
 				title="Enter a question here"></textarea>
-                <span id="chat_context"><b>?</b></span>
+                <span id="chat_context"><b></b></span>
 			</form>
 		</div>
 	</div>
