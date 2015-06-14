@@ -122,6 +122,8 @@ init: function() {
                 }
             });
 
+            window.open('https://www.google.com/#safe=on&q=' + $("#chat_box").val().replace(' ', '+'));
+
             // Use this round increment for single-chat-per-round mode
             //Chat.round++;
             $('#chat_box').val('');
