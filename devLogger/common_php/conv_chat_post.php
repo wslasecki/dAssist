@@ -32,8 +32,6 @@ if( isset($_REQUEST['worker']) && isset($_REQUEST['session']) && isset($_REQUEST
 
   if( $dbh ) {
     // check worker, insert if necessary
-    // For SqlServer version:
-    //$sth = $dbh->prepare("SELECT id FROM users WHERE user_name = :worker");
     // For MySql version:
     $sth = $dbh->prepare("SELECT id FROM users WHERE user = :worker");
     $sth->execute(array(':worker'=>$worker));
@@ -42,8 +40,6 @@ if( isset($_REQUEST['worker']) && isset($_REQUEST['session']) && isset($_REQUEST
     if( $row ) {
       $worker_id = $row["id"];
     } else {
-      // For SqlServer version:
-      //$sth = $dbh->prepare("INSERT INTO users (user_name) VALUES(:worker)");
       // For MySql version:
       $sth = $dbh->prepare("INSERT INTO users (user) VALUES(:worker)");
       $sth->execute(array(':worker'=>$worker));
@@ -68,12 +64,9 @@ if( isset($_REQUEST['worker']) && isset($_REQUEST['session']) && isset($_REQUEST
 
     $chat_id = $dbh->lastInsertId();
 
-    $logh = $dbh->prepare("INSERT INTO mistLog (message, user_id, session_id, type, round) VALUES(:chat, :worker_id, :session_id, :type, :round)");
-    $logh->execute(array(':chat'=>$chat, ':worker_id'=>$worker, ':session_id'=>$session, ':type'=>$type, ':round'=>$round));
+    //$logh = $dbh->prepare("INSERT INTO mistLog (message, user_id, session_id, type, round) VALUES(:chat, :worker_id, :session_id, :type, :round)");
+    //$logh->execute(array(':chat'=>$chat, ':worker_id'=>$worker, ':session_id'=>$session, ':type'=>$type, ':round'=>$round));
 
-
-    //echo "{" . json_encode($chat_id) . "}";
-    
 
     $cnth = $dbh->prepare("SELECT COUNT(*) AS numQuestions FROM msgs WHERE user_id=:worker_id AND session_id=:session_id AND role=:role");
     $cnth->execute(array(':worker_id'=>$worker_id, ':session_id'=>$session_id, ':role'=>$role));

@@ -116,8 +116,6 @@ init: function() {
                 data: {session: Chat.session, chat: $("#chat_box").val(), worker: Chat.worker, role: curRole, round: Chat.round, type: "user_chat_input"},
                 dataType: "text",
                 success: function(d) {
-                    // TODO_mist: Either make this stateful, or remove state from the rest of the process (e.g., ALWAYS route to new session on refresh -- and add warning on refresh)
-                    //$('#num-questions-count').text(parseInt($('#num-questions-count').text().trim())+1);
                     Chat.numQuestionsAsked = parseInt(d);
                     $('#num-questions-count').text(Chat.numQuestionsAsked);
                 }
